@@ -1,0 +1,29 @@
+#spring:
+#  cloud:
+#    config:
+#      # 配置中心的具体地址，即 config-server
+#      uri: http://localhost:8866
+#      # 对应 {application} 部分
+#      name: gateway-api
+#      # 对应 {profile} 部分
+#      profile: dev
+#      # 对应 {label} 部分，即 Git 的分支(默认是master)。如果配置中心使用的是本地存储，则该参数无用
+##      label: master
+#      discovery:
+#        enabled: true
+#        service-id: config-api
+#      fail-fast: true
+#  rabbitmq:
+#    password: guest
+#    username: guest
+#    port: 5672
+#    host: localhost
+#  application:
+#    name: gateway
+#
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: refresh
+#      base-path: /

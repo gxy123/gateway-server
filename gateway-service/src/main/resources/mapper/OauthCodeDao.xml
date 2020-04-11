@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gxy.gateway.dao.OauthCodeDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.gxy.gateway.client.domain.OauthCodeDO" id="oauthCodeMap">
+                    <result property="code" column="code"/>
+                    <result property="authentication" column="authentication"/>
+            </resultMap>
+
+    <sql id="base_column_list">
+                code,                authentication        
+    </sql>
+
+    <sql id="base_where">
+        <trim prefix="where" prefixOverrides="and|or">
+                            <if test="code != null">AND code = #{code}</if>
+                            <if test="authentication != null">AND authentication = #{authentication}</if>
+                    </trim>
+    </sql>
+
+
+    <select id="queryObject" resultMap="oauthCodeMap">
+        select
+        <include refid="base_column_list"/>
+        from oauth_code where code = #{value}
+    </select>
+
+    <select id="queryList" resultMap="oauthCodeMap"
+            parameterType="com.gxy.gateway.client.query.OauthCodeQueryDO">
+        select
+        <include refid="base_column_list"/>
+        from oauth_code
+        <include refid="base_where"/>
+        <if test="firstRow != null">
+            limit #{firstRow},#{pageSize}
+        </if>
+    </select>
+
+    <select id="queryCount" resultType="int" parameterType="com.gxy.gateway.client.query.OauthCodeQueryDO">
+        select count(*) from oauth_code
+        <include refid="base_where"/>
+    </select>
+
+    <insert id="save" parameterType="com.gxy.gateway.client.domain.OauthCodeDO">
+        insert into oauth_code
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                                                <if test="code != null">code,</if>
+                                                                <if test="authentication != null">authentication,</if>
+                                    </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                                                <if test="code != null">#{code},</if>
+                                                                <if test="authentication != null">#{authentication},</if>
+                                    </trim>
+    </insert>
+    <insert id="batchSave" parameterType="com.gxy.gateway.client.domain.OauthCodeDO">
+        insert into oauth_code
+        (
+                                    code ,                                                authentication                             )
+        values
+        <foreach collection="list" index="index" separator="," item="item">
+            (
+                                                #{item.code},                                                                #{item.authentication}                                        )
+        </foreach>
+    </insert>
+    <update id="update" parameterType="com.gxy.gateway.client.domain.OauthCodeDO">
+        update oauth_code
+        <set>
+                                                                            <if test="authentication != null">
+                        `authentication` = #{authentication},
+                    </if>
+                                    </set>
+        where code = #{code}
+    </update>
+
+    <delete id="remove">
+		delete from oauth_code where code = #{code}
+	</delete>
+
+</mapper>

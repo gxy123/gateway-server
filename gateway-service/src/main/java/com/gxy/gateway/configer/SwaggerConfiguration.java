@@ -1,0 +1,87 @@
+package com.gxy.gateway.configer;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import com.google.common.collect.Lists;
+import com.gxy.service.base.DateUtil;
+import com.gxy.service.base.EnvironmentDefine;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.ParameterBuilder;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.schema.ModelRef;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Parameter;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.List;
+
+
+
+/**
+ * @version 1.0
+ * @author: guoxiaoyu
+ * @date : 2018/5/30
+ * 因为Swagger暂不支持webflux项目
+ */
+/*@Configuration
+@EnableSwagger2*/
+public class SwaggerConfiguration  {
+
+   /* @Resource
+    private EnvironmentDefine environmentDefine;
+    @Bean
+    public Docket innerApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .enable(environmentDefine.isTest() || environmentDefine.isDev())
+                .groupName("controller")
+                .apiInfo(apiInfo())
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.gxy.gateway.web.controller"))
+                .paths(PathSelectors.any())
+                .build();
+    }
+
+    @Bean
+    public Docket openApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .enable(environmentDefine.isTest() || environmentDefine.isDev())
+                .groupName("gateway-api")
+                .apiInfo(apiInfo())
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.gxy.gateway.web.api"))
+                .paths(PathSelectors.any())
+                .build();
+    }
+
+    private ApiInfo apiInfo() {
+        return new ApiInfoBuilder()
+                .title("后端技术文档[gateway-server]")
+                .description("给大家推荐一个技术博客")
+                .termsOfServiceUrl("www.example.com")
+                .version("1.0")
+                .build();
+    }
+
+
+    private MappingJackson2HttpMessageConverter buildLongConverter() {
+        MappingJackson2HttpMessageConverter longConverter = new MappingJackson2HttpMessageConverter();
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.setDateFormat(new SimpleDateFormat(DateUtil.DEFAULT_DATE_FORMAT));
+        SimpleModule simpleModule = new SimpleModule();
+        simpleModule.addSerializer(Long.class, ToStringSerializer.instance);
+        simpleModule.addSerializer(Long.TYPE, ToStringSerializer.instance);
+        objectMapper.registerModule(simpleModule);
+        longConverter.setObjectMapper(objectMapper);
+        return longConverter;
+    }*/
+}

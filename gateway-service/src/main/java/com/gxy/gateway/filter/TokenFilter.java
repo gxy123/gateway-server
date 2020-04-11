@@ -1,7 +1,8 @@
 package com.gxy.gateway.filter;
 
 
-import com.example.jwt_crt.utils.JWTUtil;
+
+import com.jwt.base.client.utils.JWTUtil;
 import io.jsonwebtoken.*;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Value;

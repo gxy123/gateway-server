@@ -91,8 +91,8 @@
         </dependency>
         <!--token验证-->
         <dependency>
-            <groupId>com.example</groupId>
-            <artifactId>jwt_crt</artifactId>
+            <groupId>com.gxy.jwt-base</groupId>
+            <artifactId>jwt-base-client</artifactId>
            <exclusions>
                 <exclusion>
                     <groupId>org.springframework.cloud</groupId>

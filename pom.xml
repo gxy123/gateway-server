@@ -98,8 +98,8 @@
                 <version>${spring.boot.version}</version>
             </dependency>-->
             <dependency>
-                <groupId>com.example</groupId>
-                <artifactId>jwt_crt</artifactId>
+                <groupId>com.gxy.jwt-base</groupId>
+                <artifactId>jwt-base-client</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
                 <exclusions>
                     <exclusion>
